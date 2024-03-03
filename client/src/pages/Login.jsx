@@ -1,11 +1,24 @@
 import React, { useState } from 'react'
-import { Button, Container, Paper, TextField, Typography } from "@mui/material"
+import { Avatar, Button, Container, IconButton, Paper, Stack, TextField, Typography } from "@mui/material"
+import {CameraAlt as CameraAltIcon} from "@mui/icons-material"
+import { VisuallyHiddenInput } from '../components/styles/StyledComponent';
+import {useInputValidation} from "6pp";
 const Login = () => {
   const [isLogin, setLogin] = useState(true);
 
 const toggleLogin = ()=> setLogin((prev)=>!prev);
+const name = useInputValidation("");
+const userName= useInputValidation("", );
+const bio = useInputValidation("");
+const pasword= useInputValidation("");
   return (
-    <Container 
+    <div
+     style={{
+      backgroundImage:"linear-gradient(rgb(255 225 209),rgb(249 159 159)",
+
+     }}
+     >
+      <Container 
      component={"main"} 
      maxWidth="xs"
      sx={{
@@ -76,6 +89,34 @@ const toggleLogin = ()=> setLogin((prev)=>!prev);
               <form style={{
 
               }}>
+                <Stack position={"relative"} margin={"auto"} width={"10rem"}>
+                  <Avatar 
+                  sx={{
+                    width:"10rem",
+                    height:"10rem",
+                    objectFit:"contain"
+                  }}
+                  />
+
+                  <IconButton
+                  sx={{
+                    position:"absolute",
+                    bottom:"0",
+                    right:"0",
+                    color:"white",
+                    bgcolor:"rgba(0,0,0,0.5)",
+                    ":hover":{
+                      bgcolor:"rgba(0,0,0,0.7)"
+                    },
+                  }}
+                  component={"label"}
+                  >
+                    <>
+                    <CameraAltIcon/>
+                    <VisuallyHiddenInput type="file"/>
+                    </>
+                  </IconButton>
+                </Stack>
                 <TextField
                   required
                   fullWidth
@@ -97,7 +138,11 @@ const toggleLogin = ()=> setLogin((prev)=>!prev);
                   margin='normal'
                   variant='outlined'
                 />
-
+                {/* {userName.error && (
+                  <Typography color="error" variant='caption'>
+                    {userName.error}
+                  </Typography>
+                )} */}
                 <TextField
                   required
                   fullWidth
@@ -133,6 +178,8 @@ const toggleLogin = ()=> setLogin((prev)=>!prev);
       </Paper>
 
     </Container>
+    </div>
+
   )
 }
 
