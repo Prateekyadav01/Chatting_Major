@@ -131,7 +131,11 @@ const Login = () => {
                       </IconButton>
                     </Stack>
 
-                   
+                    {avatar.error && (
+                        <Typography m={"1rem"} color="error" variant='caption'>
+                          {avatar.error}
+                        </Typography>
+                      )} 
                     <TextField
                       required
                       fullWidth
