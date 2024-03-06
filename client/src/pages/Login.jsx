@@ -13,6 +13,13 @@ const Login = () => {
   const bio = useInputValidation("");
   const password = useStrongPassword("");
   const avatar = useFileHandler("single");
+
+  const handleSignup =(e)=>{
+    e.preventDefault();
+  }
+  const handleLogin =(e)=>{
+    e.preventDefault();
+  }
   return (
     <div
       style={{
@@ -46,7 +53,9 @@ const Login = () => {
                 <Typography variant='h5'>Login</Typography>
                 <form style={{
 
-                }}>
+                }}
+                onSubmit={handleLogin}
+                >
                   <TextField
                     required
                     fullWidth
@@ -100,7 +109,9 @@ const Login = () => {
                   <Typography variant='h5'>SignUp</Typography>
                   <form style={{
 
-                  }}>
+                  }}
+                  onSubmit={handleSignup}
+                  >
                     <Stack position={"relative"} margin={"auto"} width={"10rem"}>
                       <Avatar
                         sx={{
@@ -151,6 +162,8 @@ const Login = () => {
                       label="bio"
                       margin='normal'
                       variant='outlined'
+                      value={bio.value}
+                      onChange={bio.changeHandler}
                     />
                     <TextField
                       required
@@ -173,8 +186,8 @@ const Login = () => {
                       label="password"
                       margin='normal'
                       variant='outlined'
-                      value={userName.pasword}
-                      onChange={userName.changeHandler}
+                      value={password.value}
+                      onChange={password.changeHandler}
                     />
 
                     <Button
