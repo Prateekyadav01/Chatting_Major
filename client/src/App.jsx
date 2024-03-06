@@ -17,16 +17,17 @@ const App = () => {
       <Routes>
         <Route element={
           <ProtectedRoute user={user}>
-            <Route path='/' element={<Home />}></Route>
-            <Route path='/groups' element={<Groups />} />
-            <Route path='/chat/:chatId' element={<Chat />} />
+            <Route path="/" element={<Home />}></Route>
+            <Route path="/groups" element={<Groups />} />
+            <Route path="/chat/:chatId" element={<Chat />} />
           </ProtectedRoute>
         }>
         </Route>
 
-        <Route path='/login' element={
-          <ProtectedRoute user={!user}>
+        <Route path="/login" element={
+          <ProtectedRoute user={!user} redirect='/'>
             <Login />
+            {/* <Home/> */}
           </ProtectedRoute>
         } />
 
