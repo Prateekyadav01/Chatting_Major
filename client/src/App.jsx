@@ -10,24 +10,20 @@ const Chat = lazy(() => import("./pages/Chat"));
 const Groups = lazy(() => import('./pages/Groups'));
 
 
-let user = false;
+let user = true;
 const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={
-          <ProtectedRoute user={user}>
+        <Route element={<ProtectedRoute user={user} />}>
             <Route path="/" element={<Home />}></Route>
             <Route path="/groups" element={<Groups />} />
             <Route path="/chat/:chatId" element={<Chat />} />
-          </ProtectedRoute>
-        }>
+       
         </Route>
-
         <Route path="/login" element={
           <ProtectedRoute user={!user} redirect='/'>
             <Login />
-            {/* <Home/> */}
           </ProtectedRoute>
         } />
 
