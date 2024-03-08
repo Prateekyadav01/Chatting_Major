@@ -1,12 +1,13 @@
 import { AppBar, Box, IconButton, Toolbar, Tooltip, Typography } from '@mui/material'
-import React from 'react'
+import React, { useState } from 'react'
 import { orange } from '../constants/color'
 import {
   Add as AddIcon,
   Menu as MenuIcon,
   Search as SearchIcon,
   Group as GroupIcon,
-  Logout as LogoutIcon
+  Logout as LogoutIcon,
+  Notifications as NotificationsIcon
 }
   from "@mui/icons-material"
 import { useNavigate } from 'react-router-dom'
@@ -14,22 +15,36 @@ import Iconbtn from '../constants/Iconbtn'
 
 
 const Header = () => {
+
+  const [isMobile, setIsMobile] =useState(false);
+  const [isNewGroups, setIsNewGroups] =useState(false);
+  const [isSearch, setIsSearch] = useState(false);
+  const [isNotifications ,setIsNotifications] = useState(false);
+
+
   const navigate = useNavigate();
   const handleMobile = () => {
     console.log('mobile')
+    setIsMobile(prev=!prev);
   }
 
   const openSearchDialog = () => {
     console.log('search')
+    setIsSearch(prev=!prev);
   }
   const openNewGroup = () => {
     console.log('new group')
+    setIsNewGroups(prev=!prev);
   }
   const navigateToGroup = () => {
     navigate('/groups')
   }
   const handleLogout = () => {  
     console.log('logout')
+  }
+  const handleNotifications = () => { 
+    console.log('notifications')
+    setIsNotifications(prev=!prev);
   }
   return (
     <>
@@ -85,6 +100,10 @@ const Header = () => {
               <Iconbtn title={"Manage Group"}
                 onClick={navigateToGroup}
                 icon={<GroupIcon />}
+              />
+              <Iconbtn title={"Notifications"}
+                onClick={handleNotifications}
+                icon={<NotificationsIcon/>}
               />
 
               <Iconbtn title={"Logout"}

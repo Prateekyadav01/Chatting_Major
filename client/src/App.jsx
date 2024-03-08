@@ -1,6 +1,7 @@
-import React, { lazy } from 'react'
+import React, { Suspense, lazy } from 'react'
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import ProtectedRoute from './components/auth/ProtectedRoute';
+import {Loader} from './components/layout/Loader';
 
 
 // dynamic routes upload
@@ -14,20 +15,22 @@ let user = true;
 const App = () => {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route element={<ProtectedRoute user={user} />}>
+      <Suspense fallback={<Loader/>}>
+        <Routes>
+          <Route element={<ProtectedRoute user={user} />}>
             <Route path="/" element={<Home />}></Route>
             <Route path="/groups" element={<Groups />} />
             <Route path="/chat/:chatId" element={<Chat />} />
-       
-        </Route>
-        <Route path="/login" element={
-          <ProtectedRoute user={!user} redirect='/'>
-            <Login />
-          </ProtectedRoute>
-        } />
 
-      </Routes>
+          </Route>
+          <Route path="/login" element={
+            <ProtectedRoute user={!user} redirect='/'>
+              <Login />
+            </ProtectedRoute>
+          } />
+
+        </Routes>
+      </Suspense>
     </BrowserRouter>
   )
 }
