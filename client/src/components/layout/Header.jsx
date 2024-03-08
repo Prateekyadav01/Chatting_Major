@@ -1,8 +1,16 @@
 import { AppBar, Box, IconButton, Toolbar, Tooltip, Typography } from '@mui/material'
 import React from 'react'
 import { orange } from '../constants/color'
-import { Add as AddIcon, Menu as MenuIcon, Search as SearchIcon , Group as GroupIcon} from "@mui/icons-material"
-import {useNavigate} from 'react-router-dom'
+import {
+  Add as AddIcon,
+  Menu as MenuIcon,
+  Search as SearchIcon,
+  Group as GroupIcon,
+  Logout as LogoutIcon
+}
+  from "@mui/icons-material"
+import { useNavigate } from 'react-router-dom'
+import Iconbtn from '../constants/Iconbtn'
 
 
 const Header = () => {
@@ -17,8 +25,11 @@ const Header = () => {
   const openNewGroup = () => {
     console.log('new group')
   }
-  const NavigationtoGroup = () => {
+  const navigateToGroup = () => {
     navigate('/groups')
+  }
+  const handleLogout = () => {  
+    console.log('logout')
   }
   return (
     <>
@@ -61,37 +72,25 @@ const Header = () => {
             />
 
             <Box>
-              <Tooltip title="Search">
-                <IconButton
-                  size="large"
-                  edge="end"
-                  color="inherit"
-                  aria-label="menu"
-                  onClick={openSearchDialog}
-                >
-                  <SearchIcon />
-                </IconButton>
-              </Tooltip>
+              <Iconbtn title={"search"}
+                onClick={openSearchDialog}
+                icon={<SearchIcon />}
+              />
 
-              <Tooltip title="New Group">
-                <IconButton
-                  color='inherit'
-                  size='large'
-                  onClick={openNewGroup}
-                >
-                  <AddIcon />
-                </IconButton>
-              </Tooltip>
+              <Iconbtn title={"New Group"}
+                onClick={openNewGroup}
+                icon={<AddIcon />}
+              />
 
-              <Tooltip title="Manage Group">
-                <IconButton
-                  color='inherit'
-                  size='large'
-                  onClick={NavigationtoGroup}
-                >
-                  <GroupIcon />
-                </IconButton>
-              </Tooltip>
+              <Iconbtn title={"Manage Group"}
+                onClick={navigateToGroup}
+                icon={<GroupIcon />}
+              />
+
+              <Iconbtn title={"Logout"}
+                onClick={handleLogout}
+                icon={<LogoutIcon />}
+              />
 
             </Box>
           </Toolbar>
@@ -102,3 +101,5 @@ const Header = () => {
 }
 
 export default Header
+
+
