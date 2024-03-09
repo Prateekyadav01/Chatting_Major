@@ -27,7 +27,7 @@ export const Loader = () => {
         <Stack spacing={"1rem"}>  
             {
               Array.from({ length: 10 }, (v, i) => (
-                <Skeleton key={i} variant='rectangular' height={"5rem"}/>
+                <Skeleton key={i} variant='rounded' height={"5rem"}/>
               ))
             }
         </Stack>

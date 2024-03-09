@@ -1,5 +1,5 @@
-import { AppBar, Box, IconButton, Toolbar, Tooltip, Typography } from '@mui/material'
-import React, { useState } from 'react'
+import { AppBar, Backdrop, Box, IconButton, Toolbar, Tooltip, Typography } from '@mui/material'
+import React, { Suspense, useState } from 'react'
 import { orange } from '../constants/color'
 import {
   Add as AddIcon,
@@ -12,11 +12,13 @@ import {
   from "@mui/icons-material"
 import { useNavigate } from 'react-router-dom'
 import Iconbtn from '../constants/Iconbtn'
-
+import SearchDialog from '../dialogs/SearchDialog'
+import NotificationDialog from '../dialogs/NotificationDialog'
+import NewGroups from '../dialogs/NewGroups'
 
 const Header = () => {
 
-  const [isMobile, setIsMobile] =useState(false);
+  // const [isMobile, setIsMobile] =useState(false);
   const [isNewGroups, setIsNewGroups] =useState(false);
   const [isSearch, setIsSearch] = useState(false);
   const [isNotifications ,setIsNotifications] = useState(false);
@@ -115,6 +117,28 @@ const Header = () => {
           </Toolbar>
         </AppBar>
       </Box>
+
+      {
+        isSearch && (
+          <Suspense fallback={<Backdrop open />}>
+            <SearchDialog />
+          </Suspense>
+        )
+      }
+      {
+        isNotifications && (
+          <Suspense fallback={<Backdrop open/>}>
+            <NotificationDialog/>
+          </Suspense>
+        )
+      }
+      {
+        isNewGroups && (
+          <Suspense fallback={<Backdrop open/>}>
+            <NewGroups />
+          </Suspense>
+        )
+      }
     </>
   )
 }
