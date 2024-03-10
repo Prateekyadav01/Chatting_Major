@@ -1,5 +1,5 @@
 import { AppBar, Backdrop, Box, IconButton, Toolbar, Tooltip, Typography } from '@mui/material'
-import React, { Suspense, useState } from 'react'
+import React, { Suspense, useState,lazy } from 'react'
 import { orange } from '../constants/color'
 import {
   Add as AddIcon,
@@ -12,9 +12,12 @@ import {
   from "@mui/icons-material"
 import { useNavigate } from 'react-router-dom'
 import Iconbtn from '../constants/Iconbtn'
-import SearchDialog from '../dialogs/SearchDialog'
-import NotificationDialog from '../dialogs/NotificationDialog'
-import NewGroups from '../dialogs/NewGroups'
+
+
+
+const SearchDialog = lazy(()=> import("../specific/Search"));
+const NotificationDialog = lazy(()=> import("../specific/Notification"));
+const NewGroupsDialog = lazy(()=> import("../specific/NewGroup"));
 
 const Header = () => {
 
@@ -27,16 +30,17 @@ const Header = () => {
   const navigate = useNavigate();
   const handleMobile = () => {
     console.log('mobile')
-    setIsMobile(prev=!prev);
+    setIsMobile(prev=>!prev);
   }
 
   const openSearchDialog = () => {
     console.log('search')
-    setIsSearch(prev=!prev);
+    setIsSearch(prev=>!prev);
+    
   }
   const openNewGroup = () => {
     console.log('new group')
-    setIsNewGroups(prev=!prev);
+    setIsNewGroups(prev=>!prev);
   }
   const navigateToGroup = () => {
     navigate('/groups')
@@ -46,7 +50,7 @@ const Header = () => {
   }
   const handleNotifications = () => { 
     console.log('notifications')
-    setIsNotifications(prev=!prev);
+    setIsNotifications(prev=>!prev);
   }
   return (
     <>
@@ -135,7 +139,7 @@ const Header = () => {
       {
         isNewGroups && (
           <Suspense fallback={<Backdrop open/>}>
-            <NewGroups />
+            <NewGroupsDialog />
           </Suspense>
         )
       }

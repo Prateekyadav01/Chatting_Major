@@ -23,12 +23,12 @@ const Profile = () => {
         <ProfileCard
         text={"Prateek"}
         Icon={<FaceIcon/>}
-        heading={"Username"}
+        heading={"UserName"}
         />
         <ProfileCard
         text={"Prateek"}
         Icon={<UserNameIcon/>}
-        heading={"InstaUsername"}
+        heading={"InstaUserName"}
         />
         <ProfileCard
         text={moment('2024-03-10T00:00:00.000Z').fromNow()}
