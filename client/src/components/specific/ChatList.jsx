@@ -33,7 +33,7 @@ const ChatList = ({ w = "100%", chats = [], chatId, onlineUsers = [], newMessage
                           _id={_id}
                           groupChat={groupChat}
                           key={_id}
-                          handleDeleteChatOpen={handleDeleteChat}
+                          handleDeleteChat={handleDeleteChat}
                           sameSender={chatId === _id}
                           /> 
                     )
