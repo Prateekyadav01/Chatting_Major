@@ -4,9 +4,12 @@ import Title from '../shared/Title';
 import { Grid } from '@mui/material';
 import ChatList from '../specific/ChatList';
 import { sampleChats } from '../constants/sampleData';
+import { useParams } from 'react-router-dom';
 
 const AppLayout = () => (WrappedComponent) => {
    return (props) => {
+      const params = useParams();
+      const chatId = params.chatId;
       return (
          <>
             <Title />
@@ -22,7 +25,16 @@ const AppLayout = () => (WrappedComponent) => {
                   }}
                   height={"100%"}
                >
-                  <ChatList chats={sampleChats}/>
+                  <ChatList chats={sampleChats}
+                  chatId={chatId}
+                  newMessagesAlert={[
+                     {
+                        chatId,
+                        count: 4,
+                     }
+                  ]}
+                     onlineUsers={["1", "2", "3"]}
+                  />
                </Grid>
                <Grid
                   item
@@ -37,7 +49,7 @@ const AppLayout = () => (WrappedComponent) => {
                <Grid
                   item
                   md={4}
-                  lg={3} 
+                  lg={3}
                   height={"100%"}
                   sx={{
                      display: { xs: "none", md: "block" },

@@ -1,9 +1,10 @@
 import React, { memo } from 'react'
 import { Link } from '../styles/StyledComponent'
-import { Stack, Typography } from '@mui/material'
+import { Box, Stack, Typography } from '@mui/material'
 
 const ChatItem = (
-    avatar =[],
+    {
+        avatar =[],
     name,
     _id,
     groupChat = false,
@@ -12,6 +13,7 @@ const ChatItem = (
     newMessageAlert,
     index=0,
     handleDeleteChatOpen,
+    }
 ) => {
   return (
    <Link to={`/chat/${_id}`} onContextMenu={(e)=>handleDeleteChatOpen(e,_id,
@@ -21,7 +23,7 @@ const ChatItem = (
         gap:"1rem",
         padding:"1rem",
         alignItems: "center",
-        backgroundColor: sameSender ? "black" : "uset",
+        backgroundColor: sameSender ? "black" : "unset",
         color: sameSender? "white" : "unset",
         position: "relative",
     }}>
@@ -37,9 +39,22 @@ const ChatItem = (
 
         </Stack>
 
-        {/* {
-            isOnline && <Box sx
-        } */}
+        {
+           isOnline && (
+            <Box 
+              sx={{
+                width: "10px",
+                height: "10px",
+                borderRadius: "50%",
+                backgroundColor: "green",
+                position: "absolute",
+                top: "50%",
+                right: "1rem",
+                transform: "translateY(-50%)",
+              }}
+              />
+           )
+        }
     </div>
    </Link>
   )
