@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { Link } from '../styles/StyledComponent'
 import { Stack, Typography } from '@mui/material'
 
@@ -14,7 +14,8 @@ const ChatItem = (
     handleDeleteChatOpen,
 ) => {
   return (
-   <Link to={`/chat/${_id}`}>
+   <Link to={`/chat/${_id}`} onContextMenu={(e)=>handleDeleteChatOpen(e,_id,
+   groupChat)}>
     <div style={{
         display: "flex",
         gap:"1rem",
@@ -44,4 +45,4 @@ const ChatItem = (
   )
 }
 
-export default ChatItem
+export default memo(ChatItem);

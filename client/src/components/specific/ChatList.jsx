@@ -1,5 +1,6 @@
 import React from 'react'
 import { Stack } from '@mui/material'
+import ChatItem from '../shared/ChatItem'
 
 
 const ChatList = ({ w = "100%", chats = [], chatId, onlineUsers = [], newMessageAlert = [
@@ -14,7 +15,9 @@ const ChatList = ({ w = "100%", chats = [], chatId, onlineUsers = [], newMessage
         <Stack width={w} direction={"column"}>
             {
                 chats?.map((data)=>{
-                    return <div>{data}</div>
+                const {avatar , _id, name,groupChat,members} = data;
+                
+                    return <ChatItem/>
                 })
             }
         </Stack>
