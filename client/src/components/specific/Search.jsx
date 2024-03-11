@@ -1,11 +1,10 @@
+import { Dialog } from '@mui/material'
 import React from 'react'
 
 const Search = () => {
-  return (
-    <div>
-      Search
-    </div>
-  )
+  return <Dialog open >
+    abcd
+  </Dialog>
 }
 
 export default Search

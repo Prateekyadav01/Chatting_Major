@@ -3,7 +3,7 @@ import {  IconButton,  Tooltip,  } from '@mui/material'
 
 
 
-const Iconbtn = ({title , icon , onclick}) => {
+const Iconbtn = ({title , icon , onClick}) => {
 
     
   return (
@@ -11,7 +11,7 @@ const Iconbtn = ({title , icon , onclick}) => {
     <IconButton
       color='inherit'
       size='large'
-      onClick={onclick}
+      onClick={onClick}
     >
       {icon}
     </IconButton>

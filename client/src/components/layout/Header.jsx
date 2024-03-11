@@ -1,5 +1,5 @@
 import { AppBar, Backdrop, Box, IconButton, Toolbar, Tooltip, Typography } from '@mui/material'
-import React, { Suspense, useState,lazy } from 'react'
+import React, { Suspense, useState, lazy } from 'react'
 import { orange } from '../constants/color'
 import {
   Add as AddIcon,
@@ -15,41 +15,42 @@ import Iconbtn from '../constants/Iconbtn'
 
 
 
-const SearchDialog = lazy(()=> import("../specific/Search"));
-const NotificationDialog = lazy(()=> import("../specific/Notification"));
-const NewGroupsDialog = lazy(()=> import("../specific/NewGroup"));
+const SearchDialog = lazy(() => import("../specific/Search"));
+const NotificationDialog = lazy(() => import("../specific/Notification"));
+const NewGroupsDialog = lazy(() => import("../specific/NewGroup"));
 
 const Header = () => {
 
-  // const [isMobile, setIsMobile] =useState(false);
-  const [isNewGroups, setIsNewGroups] =useState(false);
+  const [isMobile, setIsMobile] =useState(false);
+  const [isNewGroups, setIsNewGroups] = useState(false);
   const [isSearch, setIsSearch] = useState(false);
-  const [isNotifications ,setIsNotifications] = useState(false);
+  const [isNotifications, setIsNotifications] = useState(false);
 
 
   const navigate = useNavigate();
   const handleMobile = () => {
     console.log('mobile')
-    setIsMobile(prev=>!prev);
+    setIsMobile((prev) => !prev);
   }
 
   const openSearchDialog = () => {
-    console.log('search')
-    setIsSearch(prev=>!prev);
+    console.log('search');
+    setIsSearch((prev) => !prev);
   }
+
   const openNewGroup = () => {
     console.log('new group')
-    setIsNewGroups(prev=>!prev);
+    setIsNewGroups((prev) => !prev);
   }
   const navigateToGroup = () => {
     navigate('/groups')
   }
-  const handleLogout = () => {  
+  const handleLogout = () => {
     console.log('logout')
   }
-  const handleNotifications = () => { 
+  const handleNotifications = () => {
     console.log('notifications')
-    setIsNotifications(prev=>!prev);
+    setIsNotifications((prev) => !prev);
   }
   return (
     <>
@@ -108,7 +109,7 @@ const Header = () => {
               />
               <Iconbtn title={"Notifications"}
                 onClick={handleNotifications}
-                icon={<NotificationsIcon/>}
+                icon={<NotificationsIcon />}
               />
 
               <Iconbtn title={"Logout"}
@@ -120,7 +121,7 @@ const Header = () => {
           </Toolbar>
         </AppBar>
       </Box>
-
+              
       {
         isSearch && (
           <Suspense fallback={<Backdrop open />}>
@@ -130,14 +131,14 @@ const Header = () => {
       }
       {
         isNotifications && (
-          <Suspense fallback={<Backdrop open/>}>
-            <NotificationDialog/>
+          <Suspense fallback={<Backdrop open />}>
+            <NotificationDialog />
           </Suspense>
         )
       }
       {
         isNewGroups && (
-          <Suspense fallback={<Backdrop open/>}>
+          <Suspense fallback={<Backdrop open />}>
             <NewGroupsDialog />
           </Suspense>
         )
@@ -146,6 +147,6 @@ const Header = () => {
   )
 }
 
-export default Header
+export default Header;
 
 
