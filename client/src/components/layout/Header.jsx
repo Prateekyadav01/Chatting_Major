@@ -36,7 +36,6 @@ const Header = () => {
   const openSearchDialog = () => {
     console.log('search')
     setIsSearch(prev=>!prev);
-    
   }
   const openNewGroup = () => {
     console.log('new group')
