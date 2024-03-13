@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import AppLayout from '../components/layout/AppLayout'
 import { IconButton, Stack } from '@mui/material';
-import { grayColor } from '../components/constants/color';
+import { grayColor, orange } from '../components/constants/color';
 import { AttachFile as AttachFileIcon, Send as SendIcon} from '@mui/icons-material';
 import { InputItem } from '../components/styles/StyledComponent';
 
@@ -31,21 +31,21 @@ const Chat = () => {
     }}>
         <IconButton sx={{
           position: "absolute",
-          left:"1rem",
-          size:"small",
-          bgcolor: "rgba(0,0,0,0.5)",
-          ":hover": {
-        }}}>
+          left:"1.5rem",
+         
+         }}>
           <AttachFileIcon/>
         </IconButton>
-        <InputItem/>
-        <IconButton bgcolor={grayColor} sx={{
-          marginRight: 5,
-          marginLeft:2,
-          
-          // position: "absolute",
-          // right:"0",
-          size:"small",
+        <InputItem placeholder='Type message here'/>
+        <IconButton type='submit' sx={{
+          rotate:"-30deg",
+          bgcolor:orange,
+          color:"white",
+          marginLeft:"1rem",
+          padding:"0.5rem",
+          "&:hover":{
+            bgcolor:"error.dark",
+          }
         }}>
           <SendIcon/>
         </IconButton>
