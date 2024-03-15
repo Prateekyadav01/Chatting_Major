@@ -24,6 +24,7 @@ const Chat = () => {
         padding={"1rem"}
         boxShadow={"border-box"}
         bgcolor={grayColor}
+        
         sx={{
           overflowX: "hidden",
           overflowY: "auto",

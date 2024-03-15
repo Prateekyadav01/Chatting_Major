@@ -1,11 +1,12 @@
 import { Box, Typography } from '@mui/material';
 import moment from 'moment';
 import React, { memo } from 'react';
+import { lightBlue } from '../constants/color';
 
 const MessageComponent = ({ message, user }) => {
   const { sender, content, attachments = [], createdAt } = message;
 
-  const sameSender = sender?.id === user?.id;
+  const sameSender = sender?._id === user?.id;
   console.log(sameSender);
   const timeAgo = moment(createdAt).fromNow();
   return (
@@ -18,22 +19,30 @@ const MessageComponent = ({ message, user }) => {
           padding: '0.5rem',
           width: 'fit-content',
           borderRadius: '5px',
+          display: 'flex',
+          flexDirection: 'column'
         }}
       >
         {!sameSender && (
-          <Typography>
+          <Typography sx={{
+            color: lightBlue,
+            fontWeight: '600',
+          }}>
             {sender.name}
           </Typography>
         )}
         {
           content && <Typography variant='captions'>{content}</Typography>
         }
-        {/* {attachments.length > 0 &&
-          attachments.map((attachment, index) => {
-            const url = attachment.url;
-            const file = 'asd';
-            // Do something with 'url' and 'file' here
-          })} */}
+
+
+
+
+        <Typography variant='caption' color={"text.secondary"}>
+          {timeAgo}
+        </Typography>
+
+
       </div>
     </>
   );
