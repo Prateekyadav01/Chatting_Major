@@ -16,8 +16,8 @@ const Groups = () => {
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [edit, setEdit] = useState(false);
-  const [editData , setEditData] = useState("");
-  const [groupName , setGroupName] = useState("Group Members")
+  const [groupName , setGroupName] = useState("Group Members");
+  const [groupNameUpdated, setGroupNameUpdated] = useState("");
 
 
   const navigateBack = () => {
@@ -32,9 +32,6 @@ const Groups = () => {
     setIsMobileMenuOpen(false);
   }
 
-  const handleEditData =()=>{
-    setEdit((prev) =>!prev);
-  }
 
   const handleUpdatedData =()=>{
     setEdit(false);
@@ -43,9 +40,9 @@ const Groups = () => {
   }
 
   useEffect(() => {
-    setEdit(false);
-    setEditData("");
-  }, []);
+    setGroupName(`Group name ${chatId}`);
+    setGroupNameUpdated("Updated Group name");
+  }, [chatId]);
 
   const IconBtn = (
     <>
@@ -88,14 +85,14 @@ const Groups = () => {
     <>
       {edit ? (
           <>
-          <textarea value={editData} onChange={(e)=>{setEditData(e.target.value)}}></textarea>
+          <textarea value={groupName} onChange={(e)=>{setGroupName(e.target.value)}}></textarea>
           <IconButton onClick={handleUpdatedData} >
             <SaveIcon/>
           </IconButton>
           </>
       ): (
           <Typography  variant='h4' >{groupName}
-          <IconButton onClick={handleEditData}>
+          <IconButton onClick={(e)=>{setEdit(true)}}>
             <EditIcon/>
           </IconButton>
           </Typography>
