@@ -77,10 +77,26 @@ export const sampleMessages=[
         content:"Hey B**bs how are you?",
         _id:"nsa",
         sender:{
-            _id:"sssss",
+            _id:"user._id",
         name:"Prateek",
         },
         chat:"chatId",
-        
+        createdAt:new Date(),
+    },
+    {
+        attachments: [
+            {
+                public_id: "abc2",
+                url: "https://www.w3schools.com/howto/img_avatar.png"
+            }
+        ],
+        content:"Hey B**bs how are you?",
+        _id:"nsa",
+        sender:{
+            _id:"ss",
+        name:"Prateek",
+        },
+        chat:"chatId",
+        createdAt:new Date(),
     }
 ]
