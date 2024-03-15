@@ -77,8 +77,8 @@ export const sampleMessages=[
         content:"Hey B**bs how are you?",
         _id:"nsa",
         sender:{
-            _id:"user._id",
-        name:"Prateek",
+            _id:"aioasj",
+        name:"Chaman",
         },
         chat:"chatId",
         createdAt:new Date(),
@@ -94,7 +94,7 @@ export const sampleMessages=[
         _id:"nsa",
         sender:{
             _id:"ss",
-        name:"Prateek",
+        name:"Javed",
         },
         chat:"chatId",
         createdAt:new Date(),
