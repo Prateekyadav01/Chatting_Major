@@ -10,7 +10,7 @@ const RenderAttachment = (file , url) => {
         
         case "image":
             return (
-              <img src={url} alt="attachment" style={{
+              <img src={transformImage(url,200)} alt="attachment" style={{
                 width: "200px",
                 height: "150px", 
                 objectFit:"contain"

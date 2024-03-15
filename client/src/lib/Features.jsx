@@ -22,8 +22,6 @@ const fileFormat =(url="")=>{
     return fileExt;
 };
 
-const transformImage = (url="" , width="100")=>{
-
-}
+const transformImage = (url="" , width="100")=> url;
 
 export {fileFormat , transformImage};
