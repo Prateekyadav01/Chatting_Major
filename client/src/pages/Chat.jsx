@@ -6,6 +6,7 @@ import { AttachFile as AttachFileIcon, Send as SendIcon } from '@mui/icons-mater
 import { InputItem } from '../components/styles/StyledComponent';
 import { sampleMessages } from '../components/constants/sampleData';
 import MessageComponent from '../components/shared/MessageComponent';
+import FileMenu from '../components/dialogs/FileMenu';
 
 const Chat = () => {
   const containerRef = useRef();
@@ -33,7 +34,7 @@ const Chat = () => {
       >
         {
           sampleMessages.map((message) => (
-            <MessageComponent message={message} user={user} />
+            <MessageComponent key={message._id} message={message} user={user} />
           ))
         }
       </Stack>
@@ -72,7 +73,7 @@ const Chat = () => {
         </Stack>
       </form>
 
-
+      <FileMenu/>
     </>
   )
 }
