@@ -1,7 +1,7 @@
 import { Backdrop, Box, Drawer, Grid, IconButton, Menu, Stack, Tooltip, Typography } from '@mui/material'
 import React, { memo, useEffect, useState } from 'react'
 import { grayColor, orange } from '../components/constants/color'
-import { Backpack as BackpackIcon, Edit as EditIcon, KeyboardBackspace as KeyboardBackspaceIcon, MenuOpen, Save as SaveIcon } from '@mui/icons-material'
+import {  Done as DoneIcon, Edit as EditIcon, KeyboardBackspace as KeyboardBackspaceIcon, MenuOpen, Save as SaveIcon } from '@mui/icons-material'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { sampleChats } from '../components/constants/sampleData'
 import { Link } from '../components/styles/StyledComponent'
@@ -85,10 +85,12 @@ const Groups = () => {
     <>
       {edit ? (
           <>
-          <textarea value={groupName} onChange={(e)=>{setGroupName(e.target.value)}}></textarea>
+           <Stack direction={"row"}>
+           <textarea value={groupName} onChange={(e)=>{setGroupName(e.target.value)}}></textarea>
           <IconButton onClick={handleUpdatedData} >
-            <SaveIcon/>
+            <DoneIcon/>
           </IconButton>
+           </Stack>
           </>
       ): (
           <Typography  variant='h4' >{groupName}
@@ -128,6 +130,8 @@ const Groups = () => {
         {IconBtn}
 
         { groupName && GroupMessageList}
+
+
       </Grid>
 
 
