@@ -4,12 +4,13 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import {Loader} from './components/layout/Loader';
 
 
+
 // dynamic routes upload
 const Home = lazy(() => import("./pages/Home"));
 const Login = lazy(() => import("./pages/Login"));
 const Chat = lazy(() => import("./pages/Chat"));
 const Groups = lazy(() => import('./pages/Groups'));
-
+const AdminLogin = lazy(()=> import("./pages/admin/AdminLogin"));
 
 let user = true;
 const App = () => {
@@ -27,7 +28,12 @@ const App = () => {
             <ProtectedRoute user={!user} redirect='/'>
               <Login />
             </ProtectedRoute>
+            
           } />
+
+
+          <Route path="/admin" element={<AdminLogin/>} />
+
 
         </Routes>
       </Suspense>
